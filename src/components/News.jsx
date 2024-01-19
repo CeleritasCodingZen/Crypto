@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Typography, Input } from 'antd';
 import moment from 'moment';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
+import Loader from './Loader';
 
 const { Text, Title } = Typography;
 
 const News = ({ simplified }) => {
-  const { data, isFetching } = useGetCryptoNewsQuery();
+  const { data, isFetching } = useGetCryptoNewsQuery();                  
   const [cryptoNews, setCryptoNews] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -23,13 +24,13 @@ const News = ({ simplified }) => {
   }, [data, searchTerm, simplified]);
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   return (
     <div style={{ textAlign: 'center', marginTop: '20px' }}>
       {!simplified && (
-        <div className="select-news">
+        <div className="select-news"> 
           <Input
             placeholder="Search News"
             onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
