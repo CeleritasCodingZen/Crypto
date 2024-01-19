@@ -287,8 +287,10 @@ a:hover{
     }
 }
 
-.select-news{
+.select-news {
     width: 180px;
+    margin: 20px auto;
+    text-align: center;
 }
 .news-card{
     min-height: 300px !important;
